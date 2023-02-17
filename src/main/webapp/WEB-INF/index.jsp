@@ -21,7 +21,26 @@ pageEncoding="UTF-8"%>
 		<!-- change to match your file/naming structure -->
 	</head>
 	<body>
-    <h1>Add a burger</h1>
+    <h1>Burger Tracker</h1>
+
+    <table class="table">
+      <thead>
+        <th>Name</th>
+        <th>Restaurant Name</th>
+        <th>Rating</th>
+      </thead>
+        <tbody>
+          <c:forEach var="burger" items="${burgers}">
+            <tr>
+              <td>${burger.name}</td>
+              <td>${burger.restaurantName}</td>
+              <td>${burger.rating}</td>
+            </tr>
+          </c:forEach>
+        </tbody>
+    </table>
+      
+    <h2>Add a burger</h2>
 		<form:form action="/burgers" method="post" modelAttribute="burger">
 			<div class="form:control">
 				<form:label path="name">name</form:label>

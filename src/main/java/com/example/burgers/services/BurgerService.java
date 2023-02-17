@@ -1,6 +1,7 @@
 package com.example.burgers.services;
 
-import javax.validation.Valid;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,5 +16,9 @@ public class BurgerService {
 
   public void createBurger(Burger burger) {
     burgerRepository.save(burger);
+  }
+
+  public List<Burger> getAllBurgers() {
+    return burgerRepository.findAll();
   }
 }

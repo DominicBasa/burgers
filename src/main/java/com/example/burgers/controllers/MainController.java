@@ -1,9 +1,12 @@
 package com.example.burgers.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +22,10 @@ public class MainController {
 
   //! CREATE/ READ ALL
   @RequestMapping("/")
-  public String index(@ModelAttribute("burger")Burger burger) {
+  public String index(@ModelAttribute("burger")Burger burger, Model model) {
+    List<Burger> burgers = burgerService.getAllBurgers();
+    System.out.println(burgers);
+    model.addAttribute("burgers", burgers);
     return "index.jsp";
   }
 
